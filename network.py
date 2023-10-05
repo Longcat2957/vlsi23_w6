@@ -19,16 +19,8 @@ class ConvBlock(nn.Module):
 class modelA(nn.Module):
     def __init__(self):
         super().__init__()
-        self.fe = nn.Sequential(
-            ConvBlock(3, 32, 3, 2, 1),
-            ConvBlock(32, 64, 3, 2, 1),
-            ConvBlock(64, 128, 3, 2, 1),
-            ConvBlock(128, 128, 3, 2, 1),
-            nn.AdaptiveMaxPool2d(1)
-        )
-        self.head = nn.Linear(
-            128, 10
-        )
+        self.fe = nn.Sequential()
+        self.head = nn.Linear()
     
     def forward(self, x):
         x = self.fe(x).squeeze()
