@@ -63,30 +63,15 @@ class PointwiseConv(nn.Module):
         out = self.relu(out)
         return out
 
-class DSBlock(nn.Module):
-    def __init__(self, in_feat, out_feat):
-        super().__init__()
-        self.body = nn.Sequential(
-            DepthwiseConv(in_feat, 3),
-            PointwiseConv(in_feat, out_feat),
-            nn.MaxPool2d(2, 2)
-        )
-    
-    def forward(self, x):
-        return self.body(x)
 
 class modelB(nn.Module):
     def __init__(self):
         super().__init__()
         self.fe = nn.Sequential(
-            DSBlock(3, 32),
-            DSBlock(32, 64),
-            DSBlock(64, 128),
-            DSBlock(128, 256),
-            nn.Flatten()
+
         )
     
-        self.head = nn.Linear(256, 10)
+        self.head = None
     
     def forward(self, x):
         x = self.fe(x)
