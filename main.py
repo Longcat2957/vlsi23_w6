@@ -13,8 +13,8 @@ from network import modelA, modelB
 
 parser = argparse.ArgumentParser()
 parser.add_argument("--root", type=str, default="./MNIST")
-parser.add_argument("--model_type", type=str, default="A", choices=["A", "B"])
-parser.add_argument("--epochs", type=int, default=100)
+parser.add_argument("--model-type", type=str, default="A", choices=["A", "B"])
+parser.add_argument("--epochs", type=int, default=10)
 parser.add_argument("--lr", type=float, default=2e-3)
 parser.add_argument("--batch-size", type=int, default=32)
 parser.add_argument("--optimizer", type=str, default="Adam", choices=["SGD", "Adam"])
