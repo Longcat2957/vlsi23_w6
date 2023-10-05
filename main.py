@@ -37,12 +37,12 @@ def get_model(type:str):
 
 if __name__ == "__main__":
     opt = parser.parse_args()
-    # check device
-    DEVICE = torch.device('cuda') if torch.cuda.is_available() else \
-        torch.device('cpu')
+    # # check device
+    # DEVICE = torch.device('cuda') if torch.cuda.is_available() else \
+    #     torch.device('cpu')
     
     # if mps(Apple Silicon)
-    # DEVICE = torch.device("mps")
+    DEVICE = torch.device("mps")
     
     # make datasets
     train_loader, val_loader = get_dataloader(opt.root, opt.batch_size, opt.num_workers)
